@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import BonjourPico
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -20,6 +21,8 @@ struct SettingsView: View {
     @Binding var pingInterval: String
     @Binding var voiceIdentifier: String
     @State var ollamaStatus: Bool?
+    @State var bonjourPico = BonjourPico()
+    @State var selectedPicoServer: PicoHomelabModel? = nil
     var save: () -> ()
     var checkServer: () -> ()
     var deleteAll: () -> ()
@@ -62,8 +65,20 @@ struct SettingsView: View {
             .padding()
             
             Form {
+                Section(header: Text("Pico AI Homelab").font(.headline)) {
+                    List(bonjourPico.servers, id: \.self, selection: $selectedPicoServer) { server in
+                        Text("\(server.name)")
+                    }
+                    Button(bonjourPico.isScanning ? "Stop scanning" : "Scan for servers") {
+                        bonjourPico.startStop()
+                    }
+                    .onChange(of: selectedPicoServer) { _, newValue in
+                        if let newValue {
+                            ollamaUri = "\(newValue.hostName):\(newValue.port)"
+                        }
+                    }
+                }
                 Section(header: Text("Ollama").font(.headline)) {
-                    
                     TextField("Ollama server URI", text: $ollamaUri, onCommit: checkServer)
                         .textContentType(.URL)
                         .disableAutocorrection(true)
@@ -194,6 +209,9 @@ struct SettingsView: View {
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("Delete All Conversations?")
+        }
+        .onDisappear {
+//            bonjourPico.stop()
         }
     }
 }
