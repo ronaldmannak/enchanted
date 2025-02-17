@@ -9,7 +9,7 @@
 
 # Enchanted
 
-Enchanted is open source, [Ollama](https://github.com/jmorganca/ollama) compatible, elegant macOS/iOS/visionOS app for working with privately hosted models such as Llama 2, Mistral, Vicuna, Starling and more. It's essentially ChatGPT app UI that connects to your private models. The goal of Enchanted is to deliver a product allowing unfiltered, secure, private and multimodal experience across all of your devices in iOS ecosystem (macOS, iOS, Watch, Vision Pro).
+Enchanted is open source, [Ollama](https://github.com/jmorganca/ollama) and [Pico AI Homelab](https://picogpt.app) compatible, elegant macOS/iOS/visionOS app for working with privately hosted models such as Llama 2, Mistral, Vicuna, Starling and more. It's essentially ChatGPT app UI that connects to your private models. The goal of Enchanted is to deliver a product allowing unfiltered, secure, private and multimodal experience across all of your devices in iOS ecosystem (macOS, iOS, Watch, Vision Pro).
 
 If you like the project, consider leaving a ⭐️ and following on [𝕏](https://twitter.com/amgauge).
 
@@ -17,7 +17,7 @@ If you like the project, consider leaving a ⭐️ and following on [𝕏](https
 
 [<img src="https://i.ibb.co/7WXt3qZ/download.png">](https://apps.apple.com/gb/app/enchanted-llm/id6474268307)
 
-Note: You will need to run your own Ollama server to use the app. Read instructions below.
+Note: You will need to run your own Ollama server or Pico AI Homelab server to use the app. Read instructions below.
 
 ## Demo
 
@@ -120,6 +120,15 @@ You're done! Make a prompt.
 5. In App Settings specify your server endpoint.
 
    You're done! Make a prompt.
+
+### Case 3. You run Pico AI Homelab
+
+1. Download [Pico AI Homelab](https://apps.apple.com/us/app/enchanted-llm/id6474268307) from the Mac App Store
+2. Download Enchanted app from the App Store.
+3. In App Settings, Click "Scan for servers"
+4. Select the Pico AI Homelab server instance you want to connect to from the list. Note that the Ollama server URI will be set automatically
+
+   You're done! Write a prompt.
 
 # Contact
 
